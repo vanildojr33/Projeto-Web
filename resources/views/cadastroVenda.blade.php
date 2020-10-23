@@ -15,17 +15,17 @@
                 <div class="col-6">
                     <select id="produto_id" class="form-control" name="produto_id" >
                         @foreach ($produtos as $produto)
-                            <option value="{{$produto->id}}">{{$produto->nome}} 
+                            <option value="{{$produto->id}}">{{$produto->nome}}
                                                             ( quantidade = {{$produto->quantidade}}
                                                             / validade = {{$produto->validade}})</option>
-                        @endforeach                              
+                        @endforeach
                     </select>
                 </div>
                 <div class="col-1">
                     <label for="quantidade" class="col-form-label">Quantidade: </label>
                 </div>
                 <div class="col-3">
-                    <input id="quantidade" type="text" name="quantidade" class="form-control col-7 @error('quantidade') is-invalid @enderror" required autofocus>
+                    <input id="quantidade" type="number" min="1" name="quantidade" class="form-control col-7 @error('quantidade') is-invalid @enderror" required autofocus>
                     @error('quantidade')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{$message}}</strong>
@@ -43,7 +43,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th> Produto</th> 
+                    <th> Produto</th>
                     <th> Qauntidade</th>
                     <th> Valor</th>
                     <th>Opções</th>
@@ -64,7 +64,7 @@
             </tbody>
         </table>
     </div>
-    
+
     <form method="POST" action="/cadastrarVenda">
         @csrf
         <div class="row">
